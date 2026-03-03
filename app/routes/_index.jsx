@@ -25,41 +25,43 @@ export default function Index() {
         </div>
       </nav>
 
-      <main className="container mx-auto px-12 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 min-h-[80vh] items-center">
-        {/* Lado Izquierdo: Tipografía Premium */}
-        <div className="space-y-12 order-2 lg:order-1 text-center lg:text-left z-20 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/50 backdrop-blur-md rounded-full border border-black/5 text-xs font-bold tracking-widest text-primary uppercase">
+      <main className="container mx-auto px-6 lg:px-12 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-12 min-h-[80vh] items-center">
+        
+        {/* BLOQUE A: Título y Texto (Siempre arriba) */}
+        <div className="space-y-8 lg:space-y-10 order-1 text-center lg:text-left z-20 relative">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/50 backdrop-blur-md rounded-full border border-black/5 text-xs font-bold tracking-widest text-primary uppercase mx-auto lg:mx-0">
             <Star className="w-3 h-3 fill-primary" /> Nuevo Lanzamiento
           </div>
 
-          <h2 className="text-7xl lg:text-9xl font-black leading-[0.85] tracking-tighter text-dark">
+          <h2 className="text-6xl lg:text-9xl font-black leading-[0.85] tracking-tighter text-dark">
             Sonido <br />
             <span className="text-gradient">Absoluto.</span>
           </h2>
 
-          <p className="text-lg lg:text-xl text-dark/60 max-w-lg leading-relaxed font-light">
+          <p className="text-base lg:text-xl text-dark/60 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
             Diseñados para desaparecer. La nueva generación de audífonos con cancelación de ruido activa y transductores de alta fidelidad.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start pt-6">
-            <button className="bg-dark text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-primary transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
-              Comprar Ahora <ArrowRight className="w-4 h-4" />
-            </button>
-            <button className="border-2 border-dark/20 text-dark px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:border-dark transition-all">
-              Especificaciones
-            </button>
-          </div>
         </div>
 
-        {/* Lado Derecho: Canvas 3D (Sin bordes ni sombras externas) */}
-        <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] w-full flex items-center justify-center">
-          {/* Aura de fondo contenida */}
+        {/* BLOQUE B: Canvas 3D (2do en móvil, Derecha en escritorio) */}
+        <div className="order-2 lg:row-span-2 relative h-[400px] lg:h-[700px] w-full flex items-center justify-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80%] bg-accent/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
           
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center scale-110 lg:scale-100">
             <EarphonesScene />
           </div>
         </div>
+
+        {/* BLOQUE C: Botones (3ro en móvil, debajo del texto en escritorio) */}
+        <div className="order-3 flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center lg:justify-start z-20">
+          <button className="bg-dark text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-primary transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 w-full sm:w-auto">
+            Comprar Ahora <ArrowRight className="w-4 h-4" />
+          </button>
+          <button className="border-2 border-dark/20 text-dark px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:border-dark transition-all w-full sm:w-auto">
+            Especificaciones
+          </button>
+        </div>
+
       </main>
 
       {/* Footer Minimalista */}

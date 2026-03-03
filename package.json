@@ -1,0 +1,36 @@
+{
+  "name": "vaisshop",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "shopify hydrogen dev",
+    "build": "shopify hydrogen build",
+    "preview": "shopify hydrogen preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.121.0",
+    "@react-three/fiber": "^8.17.14",
+    "@shopify/hydrogen": "2026.1.1",
+    "react-router": "7.9.2",
+    "lucide-react": "^0.475.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.173.0",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@react-router/dev": "7.9.2",
+    "@shopify/cli": "^3.56.0",
+    "@shopify/cli-hydrogen": "^11.1.10",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "vite": "^6.1.0"
+  },
+  "overrides": {
+    "react-router": "7.9.2",
+    "@react-router/dev": "7.9.2",
+    "@react-router/dom": "7.9.2"
+  }
+}

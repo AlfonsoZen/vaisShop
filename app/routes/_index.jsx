@@ -3,7 +3,7 @@ import { ShoppingBag, ArrowRight, Star } from "lucide-react"
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-[#E7ECEF] font-sans selection:bg-accent/20">
+    <div className="min-h-screen bg-[#E7ECEF] font-sans selection:bg-accent/20 overflow-x-hidden">
       {/* Header Minimalista */}
       <nav className="flex justify-between items-center px-12 py-8 bg-transparent border-b border-black/5">
         <div className="flex items-center gap-3">
@@ -52,9 +52,11 @@ export default function Index() {
         </div>
 
         {/* Lado Derecho: Canvas 3D (Sin bordes ni sombras externas) */}
-        <div className="order-1 lg:order-2 relative h-[600px] lg:h-[800px] w-full flex items-center justify-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-accent/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
-          <div className="w-full h-full scale-125 lg:scale-150">
+        <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] w-full flex items-center justify-center">
+          {/* Aura de fondo contenida */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80%] bg-accent/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+          
+          <div className="w-full h-full flex items-center justify-center">
             <EarphonesScene />
           </div>
         </div>

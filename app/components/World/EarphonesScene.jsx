@@ -18,7 +18,6 @@ function Model({ ...props }) {
         if (child.isMesh) {
           child.castShadow = true
           child.receiveShadow = true
-          // Aumentar intensidad de reflejos para look metálico/plástico premium
           if (child.material) {
             child.material.envMapIntensity = 2.5
             child.material.metalness = 0.8
@@ -29,22 +28,22 @@ function Model({ ...props }) {
     }
   }, [scene])
 
-  // Ajustar escala visual aquí. 0.08 suele ser grande en modelos GLTF de Three.js
-  return <primitive object={scene} {...props} scale={0.08} position={[0, -0.5, 0]} />
+  // Aumentamos escala a 0.11 y bajamos la posición a -0.25 en Y
+  return <primitive object={scene} {...props} scale={0.2} position={[0, -1.25, 0]} />
 }
 
 const EarphonesScene = () => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return <div className="h-[700px] w-full" />;
+  if (!mounted) return <div className="h-full w-full" />;
 
   return (
-    <div className="h-[700px] w-full relative">
+    <div className="h-full w-full relative">
       <Canvas 
         shadows 
         dpr={[1, 2]} 
-        camera={{ position: [0, 0, 4.5], fov: 25 }} // FOV bajo para efecto teleobjetivo de lujo
+        camera={{ position: [0, 0, 5], fov: 25 }}
         gl={{ 
           antialias: true,
           toneMapping: THREE.ACESFilmicToneMapping,
@@ -52,10 +51,8 @@ const EarphonesScene = () => {
         }}
       >
         <Suspense fallback={null}>
-          {/* Iluminación de Estudio: Principal, Relleno y Contorno */}
           <ambientLight intensity={0.4} />
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} />
           
           <PresentationControls
             global
@@ -68,9 +65,8 @@ const EarphonesScene = () => {
             <Model />
           </PresentationControls>
 
-          {/* Sombra de contacto ultra suave para realismo en suelo */}
           <ContactShadows 
-            position={[0, -0.8, 0]} 
+            position={[0, -1.2, 0]} 
             opacity={0.35} 
             scale={12} 
             blur={3} 

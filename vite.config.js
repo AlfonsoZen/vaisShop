@@ -8,18 +8,24 @@ export default defineConfig({
   plugins: [
     hydrogen(),
     reactRouter(),
+    {
+      name: 'fix-node-imports',
+      enforce: 'pre',
+      transform(code, id) {
+        if (id.includes('fflate') || id.includes('three-stdlib')) {
+          return code
+            .replace(/import\s*{\s*createRequire\s*}\s*from\s*['"]module['"]\s*;?/g, 'const createRequire = (path) => (req) => ({});')
+            .replace(/import\s*['"]module['"]\s*;?/g, '');
+        }
+      }
+    }
   ],
   ssr: {
     noExternal: true,
     target: 'webworker',
   },
   resolve: {
-    alias: {
-      // Evita que dependencias intenten cargar módulos de Node en Oxygen
-      'module': 'identity-obj-proxy',
-      'fs': 'identity-obj-proxy',
-      'path': 'identity-obj-proxy',
-    }
+    conditions: ['worker', 'browser', 'import', 'module', 'default'],
   },
   css: {
     postcss: {
@@ -29,10 +35,8 @@ export default defineConfig({
       ],
     },
   },
-  optimizeDeps: {
-    include: ['@react-three/fiber', 'three', 'lucide-react'],
-  },
   build: {
     assetsInlineLimit: 0,
+    ssrEmitAssets: true,
   }
 });

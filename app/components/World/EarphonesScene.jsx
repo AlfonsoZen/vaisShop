@@ -28,7 +28,6 @@ function Model({ ...props }) {
     }
   }, [scene])
 
-  // Aumentamos escala a 0.11 y bajamos la posición a -0.25 en Y
   return <primitive object={scene} {...props} scale={0.2} position={[0, -1.25, 0]} />
 }
 
@@ -66,7 +65,7 @@ const EarphonesScene = () => {
           </PresentationControls>
 
           <ContactShadows 
-            position={[0, -1.2, 0]} 
+            position={[0, -0.75, 0]} 
             opacity={0.35} 
             scale={12} 
             blur={3} 

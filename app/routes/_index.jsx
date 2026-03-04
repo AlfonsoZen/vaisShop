@@ -65,8 +65,8 @@ export default function Index() {
       </main>
 
       {/* Footer Minimalista */}
-      <footer className="px-12 py-12 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-black/5 opacity-40 text-xs font-bold tracking-widest uppercase">
-        <p>© 2026 VAIS. Crafted with Three.js & Shopify.</p>
+      <footer className="px-12 py-9 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-black/5 opacity-40 text-xs font-bold tracking-widest uppercase">
+        <p>© 2026 VAIS. By Alfonso Zendejas.</p>
         <div className="flex gap-10">
           <span>Privacidad</span>
           <span>Términos</span>

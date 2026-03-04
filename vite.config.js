@@ -8,25 +8,7 @@ export default defineConfig({
   plugins: [
     hydrogen(),
     reactRouter(),
-    {
-      name: 'fix-node-imports',
-      enforce: 'pre',
-      transform(code, id) {
-        if (id.includes('fflate') || id.includes('three-stdlib')) {
-          return code
-            .replace(/import\s*{\s*createRequire\s*}\s*from\s*['"]module['"]\s*;?/g, 'const createRequire = (path) => (req) => ({});')
-            .replace(/import\s*['"]module['"]\s*;?/g, '');
-        }
-      }
-    }
   ],
-  ssr: {
-    noExternal: true,
-    target: 'webworker',
-  },
-  resolve: {
-    conditions: ['worker', 'browser', 'import', 'module', 'default'],
-  },
   css: {
     postcss: {
       plugins: [
@@ -35,8 +17,7 @@ export default defineConfig({
       ],
     },
   },
-  build: {
-    assetsInlineLimit: 0,
-    ssrEmitAssets: true,
-  }
+  optimizeDeps: {
+    include: ['@react-three/fiber', 'three', 'lucide-react'],
+  },
 });

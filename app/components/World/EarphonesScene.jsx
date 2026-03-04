@@ -19,8 +19,8 @@ function Model({ ...props }) {
           child.castShadow = true
           child.receiveShadow = true
           if (child.material) {
-            child.material.envMapIntensity = 2.5
-            child.material.metalness = 0.8
+            child.material.envMapIntensity = 1.2
+            child.material.metalness = 0.05
             child.material.roughness = 0.2
           }
         }
@@ -82,7 +82,7 @@ const EarphonesScene = () => {
           enableZoom={false} 
           enablePan={false}
           autoRotate 
-          autoRotateSpeed={0.4} 
+          autoRotateSpeed={0.8} 
           minPolarAngle={Math.PI / 2.5}
           maxPolarAngle={Math.PI / 2}
         />

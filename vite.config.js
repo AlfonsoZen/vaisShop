@@ -9,6 +9,10 @@ export default defineConfig({
     hydrogen(),
     reactRouter(),
   ],
+  ssr: {
+    // Esto es CRÍTICO para Oxygen: empaqueta todas las dependencias en el worker
+    noExternal: true,
+  },
   css: {
     postcss: {
       plugins: [
@@ -20,4 +24,8 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@react-three/fiber', 'three', 'lucide-react'],
   },
+  build: {
+    // Optimizamos para el runtime de Oxygen
+    assetsInlineLimit: 0,
+  }
 });

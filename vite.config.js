@@ -10,8 +10,16 @@ export default defineConfig({
     reactRouter(),
   ],
   ssr: {
-    // Esto es CRÍTICO para Oxygen: empaqueta todas las dependencias en el worker
     noExternal: true,
+    target: 'webworker',
+  },
+  resolve: {
+    alias: {
+      // Evita que dependencias intenten cargar módulos de Node en Oxygen
+      'module': 'identity-obj-proxy',
+      'fs': 'identity-obj-proxy',
+      'path': 'identity-obj-proxy',
+    }
   },
   css: {
     postcss: {
@@ -25,7 +33,6 @@ export default defineConfig({
     include: ['@react-three/fiber', 'three', 'lucide-react'],
   },
   build: {
-    // Optimizamos para el runtime de Oxygen
     assetsInlineLimit: 0,
   }
 });
